@@ -461,6 +461,22 @@ limit_right = 1004
 limit_bottom = 908
 rotation_smoothing_enabled = true
 
+[node name="nook_camera" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+limit_left = 4
+limit_top = 4
+limit_right = 680
+limit_bottom = 412
+rotation_smoothing_enabled = true
+
+[node name="farm_camera" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+limit_left = 4
+limit_top = 4
+limit_right = 540
+limit_bottom = 528
+rotation_smoothing_enabled = true
+
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

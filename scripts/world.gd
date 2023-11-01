@@ -35,13 +35,23 @@ func _on_world_to_nook_transition_body_exited(body):
 	if body.has_method("player"):
 		global.transition_scene = false
 
+# Handles scene change to farm
+func _on_world_to_farm_transition_body_entered(body):
+	if body.has_method("player"):
+		global.transition_scene = true
+		new_scene = "farm"
+		global.last_position = global.right_world_exit
 
+func _on_world_to_farm_transition_body_exited(body):
+	if body.has_method("player"):
+		global.transition_scene = false
 
 func change_scene():
 	if global.transition_scene: 
 		if global.current_scene != new_scene:
 			get_tree().change_scene_to_file("res://scenes/%s.tscn" % new_scene)
 			global.finish_scene_transition(new_scene)
+
 
 
 

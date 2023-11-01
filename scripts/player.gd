@@ -154,6 +154,12 @@ func current_camera():
 	elif global.current_scene == "glade":
 		$world_camera.enabled = false
 		$glade_camera.enabled = true
+	elif global.current_scene == "nook":
+		$world_camera.enabled = false
+		$glade_camera.enabled = true
+	elif global.current_scene == "farm":
+		$world_camera.enabled = false
+		$glade_camera.enabled = true
 
 
 

@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cbq8fl3f3sc7h"]
+[gd_scene load_steps=12 format=3 uid="uid://cbq8fl3f3sc7h"]
 
+[ext_resource type="Script" path="res://scripts/glade.gd" id="1_ikoax"]
 [ext_resource type="Texture2D" uid="uid://me4vtkdd20s8" path="res://art/tilesets/plains.png" id="1_v4xgt"]
 [ext_resource type="Texture2D" uid="uid://dui1saykwmxwo" path="res://art/tilesets/grass.png" id="2_gt1qh"]
 [ext_resource type="Texture2D" uid="uid://bog5qs72raegi" path="res://art/objects/objects.png" id="3_7cy75"]
@@ -279,7 +280,11 @@ sources/0 = SubResource("TileSetAtlasSource_tmvv3")
 sources/1 = SubResource("TileSetAtlasSource_kbujp")
 sources/2 = SubResource("TileSetAtlasSource_1hnu4")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_twqco"]
+size = Vector2(34, 50.5)
+
 [node name="glade" type="Node2D"]
+script = ExtResource("1_ikoax")
 
 [node name="TileMap2" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -318,3 +323,12 @@ position = Vector2(403, 295)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="collisions"]
 polygon = PackedVector2Array(0, 0, 1007, 0, 1007, 475, 1030, 475, 1030, 537, 1007, 537, 1007, 911, 0, 910, 0, 1, -5, -2, -29, 0, -28, 937, 1073, 938, 1072, -36, -12, -37, -5, -3)
+
+[node name="glade_to_world_transition" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="glade_to_world_transition"]
+position = Vector2(1024, 505.25)
+shape = SubResource("RectangleShape2D_twqco")
+
+[connection signal="body_entered" from="glade_to_world_transition" to="." method="_on_glade_to_world_transition_body_entered"]
+[connection signal="body_exited" from="glade_to_world_transition" to="." method="_on_glade_to_world_transition_body_exited"]
